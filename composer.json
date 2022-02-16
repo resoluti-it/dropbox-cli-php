@@ -11,6 +11,9 @@
             "email": "washington-kd@hotmail.com"
         }
     ],
+    "scripts" : {
+        "test" : "vendor/bin/pest"
+    },
     "require": {
         "php": "^7.4|^8.0",
         "vanilla/garden-cli": "^3.1",
