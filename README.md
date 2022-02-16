@@ -1,5 +1,5 @@
 #### instalar: composer install
-#### definir do dropbox access token no .env
+#### definir access token no .env
 #### permissao de execucao: chmod +x run
 
 ```bash
