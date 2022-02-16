@@ -41,6 +41,8 @@ class FileUploader
 
         $uploadDropbox = $dropboxClient->upload($cliPathname, file_get_contents($newFullPath));
 
+        unlink($newFullPath);
+
         return $uploadDropbox;
     }
 
