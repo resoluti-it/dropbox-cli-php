@@ -1,0 +1,16 @@
+#! /usr/bin/php
+<?php
+require "vendor/autoload.php";
+
+use App\CommandLine;
+use App\DotenvLoad;
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+
+$cli = new CommandLine($argv);
+$envLoad = new DotenvLoad($dotenv);
+
+$cli->start();
+
+var_dump($envLoad->getAccessToken());
