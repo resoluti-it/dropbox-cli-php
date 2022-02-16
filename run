@@ -10,8 +10,6 @@ use Dotenv\Dotenv;
 $currentPath = __DIR__;
 $dotenv = Dotenv::createImmutable($currentPath);
 
-var_dump($argv);
-exit;
 $cli = new CommandLine($argv);
 $envLoad = new DotenvLoad($dotenv);
 
