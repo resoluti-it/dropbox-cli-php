@@ -7,13 +7,16 @@ use App\DotenvLoad;
 use App\FileUploader;
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
+$currentPath = __DIR__;
+$dotenv = Dotenv::createImmutable($currentPath);
 
 $cli = new CommandLine($argv);
 $envLoad = new DotenvLoad($dotenv);
 
 $cli->start();
 
-$fileUploader = new FileUploader($cli);
+$fileUploader = new FileUploader($envLoad, $cli, $currentPath);
 
-$fileUploader->upload();
+$infos = $fileUploader->upload();
+
+echo json_encode($infos);

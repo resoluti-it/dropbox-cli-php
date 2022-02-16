@@ -6,7 +6,6 @@ use Garden\Cli\Cli;
 
 class CommandLine
 {
-
     private string $filepath;
     private string $folder;
     private array $argv;

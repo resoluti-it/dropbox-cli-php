@@ -20,17 +20,10 @@ class DropboxClient
         return $this->accessToken;
     }
 
-    public function setAcesssToken(string $accessToken): self
+    public function setAccessToken(string $accessToken): self
     {
         $this->accessToken = $accessToken;
 
         return $this;
-    }
-
-    public function upload(string $path): array
-    {
-        $result = $this->getDropbox()->upload($path, file_get_contents($path));
-
-        return $result;
     }
 }
