@@ -29,5 +29,7 @@ test('testarUploadDeArquivo', function () {
 
     echo json_encode($infos);
 
+    $fileUploader->removeFile($infos['path_display']);
+
     expect(true)->toBeTrue();
 });

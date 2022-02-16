@@ -46,6 +46,13 @@ class FileUploader
         return $uploadDropbox;
     }
 
+    public function removeFile(string $path): void
+    {
+        $dropboxClient = $this->getDropboxClient()->getDropbox();
+
+        $dropboxClient->delete($path);
+    }
+
     private function getDropboxClient(): DropboxClient
     {
         $dropbox = new DropboxClient();
