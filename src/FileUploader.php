@@ -3,10 +3,20 @@
 namespace App;
 
 use App\CommandLine;
+use App\Utils;
 
 class FileUploader
 {
-    public function upload(CommandLine $cmd)
+    private CommandLine $cmd;
+    public function __construct(CommandLine $cmd)
     {
+        $this->cmd = $cmd;
+    }
+
+    public function upload()
+    {
+        $key = Utils::randomKey();
+
+        
     }
 }
