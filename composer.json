@@ -18,7 +18,8 @@
         "php": "^7.4|^8.0",
         "vanilla/garden-cli": "^3.1",
         "vlucas/phpdotenv": "^5.4",
-        "spatie/dropbox-api": "^1.19"
+        "spatie/dropbox-api": "^1.19",
+        "doctrine/orm": "^2.11"
     },
     "require-dev": {
         "pestphp/pest": "^1.21"
