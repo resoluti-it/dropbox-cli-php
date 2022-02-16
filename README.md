@@ -1,4 +1,5 @@
-#### instalar: composer install
+#### instalar em dev: composer install
+#### instalar em producao: composer install --no-dev
 #### definir access token no .env
 #### permissao de execucao: chmod +x run
 
