@@ -6,7 +6,7 @@ class FileUploader
 {
     private CommandLine $cmd;
     private DotenvLoad $dotenvLoad;
-    public function __construct(DotenvLoad $dotenvLoad, CommandLine $cmd, string $currentPath = "/")
+    public function __construct(DotenvLoad $dotenvLoad, CommandLine $cmd, string $currentPath)
     {
         $this->currentPath = $currentPath;
         $this->dotenvLoad = $dotenvLoad;
@@ -27,9 +27,13 @@ class FileUploader
 
         $localFileInfo = pathinfo($localFile);
 
-        $formattedName = Utils::formatString($localFileInfo['filename']);
+        $formattedName = $localFileInfo['filename'];
 
-        $newFileName = "{$formattedName}_{$key}.{$localFileInfo['extension']}";
+        $newFileName = "{$formattedName}.{$localFileInfo['extension']}";
+
+        if ($this->cmd->getRename()) {
+            $newFileName = "{$formattedName}_{$key}.{$localFileInfo['extension']}";
+        }
 
         $newFullPath = "{$tempPath}/{$newFileName}";
 

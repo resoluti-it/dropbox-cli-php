@@ -13,7 +13,8 @@ test('testarUploadDeArquivo', function () {
     $arr = [
         "./run",
         "--filepath={$currentPath}/composer.json",
-        "--folder=test"
+        "--folder=test",
+        "--rename"
     ];
 
     $dotenv = Dotenv::createImmutable($currentPath);
