@@ -1,4 +1,5 @@
 <?php
+
 require "vendor/autoload.php";
 
 use App\CommandLine;
@@ -8,7 +9,7 @@ use Dotenv\Dotenv;
 
 test('testarUploadDeArquivo', function () {
     $currentPath = realpath(__DIR__."/../");
-    
+
     $arr = [
         "./run",
         "--filepath={$currentPath}/composer.json",
