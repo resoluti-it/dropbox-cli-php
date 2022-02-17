@@ -16,7 +16,6 @@ class DoctrineManager
             'dbname' => $_ENV['DB_NAME']
         ];
 
-        $this->isDevMode = $_ENV['ENV_DEV'];
         $this->entityPath = realpath(__DIR__ . "/../Entity");
     }
 
