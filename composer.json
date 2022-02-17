@@ -19,7 +19,10 @@
         "vanilla/garden-cli": "^3.1",
         "vlucas/phpdotenv": "^5.4",
         "spatie/dropbox-api": "^1.19",
-        "doctrine/orm": "^2.11"
+        "doctrine/orm": "^2.11",
+        "symfony/cache": "^5.4",
+        "doctrine/annotations": "^1.13",
+        "doctrine/dbal": "^3.3"
     },
     "require-dev": {
         "pestphp/pest": "^1.21"

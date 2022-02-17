@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database;
+namespace App\Service;
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -24,7 +24,6 @@ class DoctrineManager
     {
         $config = Setup::createAnnotationMetadataConfiguration([$this->entityPath], true);
         $entityManager = EntityManager::create($this->params, $config);
-
         return $entityManager;
     }
 }

@@ -1,9 +1,11 @@
+#! /usr/bin/php
 <?php
 require "vendor/autoload.php";
 
 use App\DotenvLoad;
 use Dotenv\Dotenv;
-use App\Database\DoctrineManager;
+use App\Service\DoctrineManager;
+use App\Entity\LogCdr;
 
 $currentPath = __DIR__;
 $dotenv = Dotenv::createImmutable($currentPath);
@@ -12,3 +14,7 @@ $envLoad = new DotenvLoad($dotenv);
 $newDoctrine = new DoctrineManager();
 
 $doctrine = $newDoctrine->getDoctrine();
+
+$logCdr = $doctrine->getRepository(LogCdr::class)->findOneBy(['id' => 1]);
+
+var_dump($logCdr);

@@ -21,9 +21,9 @@ class CommandLine
         $cli = new Cli();
 
         $cli
-            ->opt('folder:p', 'cria uma pasta no dropbox no upload ou no sistema operacional no download', true)
+            ->opt('folder:p', 'cria uma pasta no dropbox no upload ou no sistema operacional no download')
             ->opt('rename:r', 'renomeia o nome do arquivo')
-            ->opt('filepath:f', 'caminho do arquivo que será feito o upload', true);
+            ->opt('filepath:f', 'caminho do arquivo que será feito o upload');
 
         $args = $cli->parse($this->argv, true);
 
