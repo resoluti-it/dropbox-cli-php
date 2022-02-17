@@ -2,8 +2,8 @@
 
 namespace App\Service;
 
-use App\CommandLine;
-use App\DropboxClient;
+use App\Service\CommandLine;
+use App\Service\DropboxClient;
 use App\Entity\LogCdr;
 
 class LogCdrService

@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"\/home\/tomoliveirabastos\/Dev\/dropbox-cli-php\/tests\/ExampleTest.php::example":0.003,"\/home\/tomoliveirabastos\/Dev\/dropbox-cli-php\/tests\/UploadTest.php::testarUploadDeArquivo":9.389}}
+{"version":1,"defects":{"\/home\/tomoliveirabastos\/Dev\/dropbox-cli-php\/tests\/UploadTest.php::testarUploadDeArquivo":4},"times":{"\/home\/tomoliveirabastos\/Dev\/dropbox-cli-php\/tests\/ExampleTest.php::example":0.003,"\/home\/tomoliveirabastos\/Dev\/dropbox-cli-php\/tests\/UploadTest.php::testarUploadDeArquivo":3.25}}

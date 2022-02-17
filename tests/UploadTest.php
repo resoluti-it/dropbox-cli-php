@@ -2,9 +2,9 @@
 
 require "vendor/autoload.php";
 
-use App\CommandLine;
-use App\DotenvLoad;
-use App\FileUploader;
+use App\Service\CommandLine;
+use App\Service\DotenvLoad;
+use App\Service\FileUploader;
 use Dotenv\Dotenv;
 
 test('testarUploadDeArquivo', function () {

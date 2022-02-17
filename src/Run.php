@@ -2,9 +2,9 @@
 
 namespace App;
 
-use App\CommandLine;
-use App\DotenvLoad;
-use App\FileUploader;
+use App\Service\CommandLine;
+use App\Service\DotenvLoad;
+use App\Service\FileUploader;
 use App\Service\LogCdrService;
 use Dotenv\Dotenv;
 
