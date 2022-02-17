@@ -1,5 +1,5 @@
 {
-    "name": "tomoliveirabastos/dropbox-cli-php",
+    "name": "resoluti/dropbox-cli-php",
     "autoload": {
         "psr-4": {
             "App\\": "src/"
@@ -7,12 +7,12 @@
     },
     "authors": [
         {
-            "name": "Tom Oliveira",
-            "email": "washington-kd@hotmail.com"
+            "name": "Resoluti",
+            "email": "resoluti@resoluti.com.br"
         }
     ],
-    "scripts" : {
-        "test" : "vendor/bin/pest"
+    "scripts": {
+        "test": "vendor/bin/pest"
     },
     "require": {
         "php": "^7.4|^8.0",

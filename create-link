@@ -11,15 +11,17 @@ $currentPath = __DIR__;
 $dotenv = Dotenv::createImmutable($currentPath);
 $envLoad = new DotenvLoad($dotenv);
 
-$newDoctrine = new DoctrineManager();
+$manager = new DoctrineManager();
 
-$doctrine = $newDoctrine->getDoctrine();
+$doctrine = $manager->getDoctrine();
 
 /**
  * @var LogCdr
  */
-$logCdr = $doctrine->getRepository(LogCdr::class)->findOneBy(['id' => 1]);
+$logCdr = $doctrine->getRepository(LogCdr::class)->findOneBy(['uniqueid' => '1616153143.306']);
 
 $logCdr->setLinkMp3('asdasdas');
 
 $doctrine->flush();
+
+var_dump($logCdr->getId());

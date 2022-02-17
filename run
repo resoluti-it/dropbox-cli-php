@@ -11,6 +11,7 @@ $currentPath = __DIR__;
 $dotenv = Dotenv::createImmutable($currentPath);
 
 $cli = new CommandLine($argv);
+
 $envLoad = new DotenvLoad($dotenv);
 
 $cli->start();

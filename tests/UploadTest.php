@@ -20,6 +20,7 @@ test('testarUploadDeArquivo', function () {
     $dotenv = Dotenv::createImmutable($currentPath);
 
     $cli = new CommandLine($arr);
+
     $envLoad = new DotenvLoad($dotenv);
 
     $cli->start();
