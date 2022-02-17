@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * LogCdr
  * @ORM\Entity
@@ -19,8 +18,8 @@ class LogCdr
     private int $id;
 
     /**
-     * @var int'
-     * @ORM\Column(name="contador", type="int")
+     * @var int
+     * @ORM\Column(name="contador", type="integer")
      */
     private int $contador;
 
@@ -84,7 +83,6 @@ class LogCdr
     private string $lastdata;
 
     /**
-     * @var int
      * @ORM\Column(name="duration", type="integer")
      */
     private int $duration;
@@ -116,9 +114,9 @@ class LogCdr
 
     /**
      * @var string
-     * @ORM\Column(name="uniqid",type="string")
+     * @ORM\Column(name="uniqueid",type="string")
      */
-    private string $uniqid;
+    private string $uniqueid;
 
 
     /**
@@ -352,21 +350,21 @@ class LogCdr
     }
 
     /**
-     * Get the value of uniqid
+     * Get the value of uniqueid
      */
-    public function getUniqid()
+    public function getUniqueid()
     {
-        return $this->uniqid;
+        return $this->uniqueid;
     }
 
     /**
-     * Set the value of uniqid
+     * Set the value of uniqeid
      *
      * @return  self
      */
-    public function setUniqid($uniqid)
+    public function setUniqueid($uniqueid)
     {
-        $this->uniqid = $uniqid;
+        $this->uniqueid = $uniqueid;
 
         return $this;
     }

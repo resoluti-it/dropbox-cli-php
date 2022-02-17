@@ -15,6 +15,11 @@ $newDoctrine = new DoctrineManager();
 
 $doctrine = $newDoctrine->getDoctrine();
 
+/**
+ * @var LogCdr
+ */
 $logCdr = $doctrine->getRepository(LogCdr::class)->findOneBy(['id' => 1]);
 
-var_dump($logCdr);
+$logCdr->setLinkMp3('asdasdas');
+
+$doctrine->flush();
