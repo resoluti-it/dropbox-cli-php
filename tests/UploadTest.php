@@ -14,6 +14,7 @@ test('testarUploadDeArquivo', function () {
         "./run",
         "--filepath={$currentPath}/composer.json",
         "--folder=test",
+        "--uniqueid=asdahsduasudha",
         "--rename"
     ];
 
