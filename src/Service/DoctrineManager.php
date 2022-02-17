@@ -21,8 +21,10 @@ class DoctrineManager
 
     public function getDoctrine(): EntityManager
     {
-        $config = Setup::createAnnotationMetadataConfiguration([$this->entityPath], true,  null, null, false);
+        $config = Setup::createAnnotationMetadataConfiguration([$this->entityPath], true, null, null, false);
+
         $entityManager = EntityManager::create($this->params, $config);
+
         return $entityManager;
     }
 }

@@ -2,22 +2,12 @@
 <?php
 require "vendor/autoload.php";
 
-use App\CommandLine;
-use App\DotenvLoad;
-use App\FileUploader;
-use Dotenv\Dotenv;
+use App\Run;
 
 $currentPath = __DIR__;
-$dotenv = Dotenv::createImmutable($currentPath);
 
-$cli = new CommandLine($argv);
+$run = new Run($currentPath, $argv);
 
-$envLoad = new DotenvLoad($dotenv);
+$dropboxReponse = $run->dropboxReponse();
 
-$cli->start();
-
-$fileUploader = new FileUploader($envLoad, $cli, $currentPath);
-
-$infos = $fileUploader->upload();
-
-echo json_encode($infos);
+echo json_encode($dropboxReponse);

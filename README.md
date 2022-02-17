@@ -5,7 +5,7 @@
 
 ### Exemplo de input
 ```bash
-./run --filepath="/caminho/do/arquivo.docx" --folder="nome_da_pasta_no_dropbox"
+./run --filepath="/caminho/do/arquivo.docx" --folder="nome_da_pasta_no_dropbox" --uniqueid="1616153143.306" --rename
 ```
 
 ### Exemplo de output

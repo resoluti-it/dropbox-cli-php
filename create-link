@@ -3,12 +3,15 @@
 require "vendor/autoload.php";
 
 use App\DotenvLoad;
+use App\DropboxClient;
 use Dotenv\Dotenv;
 use App\Service\DoctrineManager;
 use App\Entity\LogCdr;
 
 $currentPath = __DIR__;
+
 $dotenv = Dotenv::createImmutable($currentPath);
+
 $envLoad = new DotenvLoad($dotenv);
 
 $manager = new DoctrineManager();
@@ -24,4 +27,6 @@ $logCdr->setLinkMp3('asdasdas');
 
 $doctrine->flush();
 
-var_dump($logCdr->getId());
+$handleDropbox = new DropboxClient();
+
+$app = $handleDropbox->getDropbox()->createSharedLinkWithSettings('asdaisjda/composer.json');

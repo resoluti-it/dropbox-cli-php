@@ -26,4 +26,12 @@ class DropboxClient
 
         return $this;
     }
+
+
+    public function generateSharedLink(string $path, array $sttg = []): string
+    {
+        $info = $this->getDropbox()->createSharedLinkWithSettings($path, $sttg);
+
+        return $info['url'];
+    }
 }
