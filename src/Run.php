@@ -23,6 +23,20 @@ class Run
         $this->envLoad = new DotenvLoad($this->dotenv);
     }
 
+    public function deleteOriginalFile(): bool
+    {
+        try {
+            if (!$this->cli->getDeleteFile()) {
+                return false;
+            }
+
+            unlink($this->cli->getFilepath());
+
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 
     public function dropboxReponse()
     {
@@ -37,6 +51,8 @@ class Run
         $logCdrService = new LogCdrService();
 
         $logCdrService->sharedLink($this->cli, $path);
+
+        $this->deleteOriginalFile();
 
         return $infos;
     }

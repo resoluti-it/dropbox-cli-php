@@ -11,6 +11,7 @@
 #### folder: cria pasta no dropbox - obrigatório
 #### filepath: caminho do arquivo local - obrigatório
 #### uniqueid: unique id para gerar link do arquivo e salvar no banco - obrigatório
+#### deleteOriginalFilepath: deleta arquivo original - opcional
 
 ## Exemplo de output
 ```bash

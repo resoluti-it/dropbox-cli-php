@@ -25,6 +25,7 @@ class CommandLine
             ->opt('folder:p', 'cria uma pasta no dropbox no upload ou no sistema operacional no download', true)
             ->opt('rename:r', 'renomeia o nome do arquivo')
             ->opt('uniqueid:u', 'passar unique id', true)
+            ->opt('deleteOriginalFilepath:d', 'deleta arquivo original')
             ->opt('filepath:f', 'caminho do arquivo que será feito o upload', true);
 
         $args = $cli->parse($this->argv, true);
@@ -32,9 +33,15 @@ class CommandLine
         $this->filepath = $args['filepath'];
         $this->folder = $args['folder'];
         $this->rename = $args->hasOpt('rename');
+        $this->deleteFile = $args->hasOpt('deleteOriginalFilepath');
         $this->uniqueId = $args['uniqueid'] ?? '';
 
         return $this;
+    }
+
+    public function getDeleteFile(): bool
+    {
+        return $this->deleteFile;
     }
 
     public function getUniqueId(): string
