@@ -22,4 +22,6 @@ try {
     }
 
     file_put_contents("{$logsPath}/log.txt", date('Y-m-d H:i:s') . " - " . $e->getMessage(). PHP_EOL, FILE_APPEND);
+
+    echo $e->getMessage();
 }

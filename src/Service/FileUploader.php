@@ -15,7 +15,7 @@ class FileUploader
         $this->cmd = $cmd;
     }
 
-    public function upload()
+    public function upload(): array
     {
         if (!file_exists($this->cmd->getFilepath())) {
             throw new \Exception('o caminho original do arquivo declarado não existe');
