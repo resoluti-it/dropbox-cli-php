@@ -8,6 +8,18 @@ $currentPath = __DIR__;
 
 $run = new Run($currentPath, $argv);
 
-$dropboxReponse = $run->dropboxReponse();
+try {
 
-echo json_encode($dropboxReponse);
+    $dropboxReponse = $run->dropboxReponse();
+
+    echo json_encode($dropboxReponse);
+} catch (\Exception $e) {
+    $logsPath = $currentPath . '/logs';
+
+    if (!is_dir($logsPath)) {
+
+        mkdir($logsPath, 0777, true);
+    }
+
+    file_put_contents("{$logsPath}/log.txt", date('Y-m-d H:i:s') . " - " . $e->getMessage(). PHP_EOL, FILE_APPEND);
+}

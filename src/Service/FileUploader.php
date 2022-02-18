@@ -17,6 +17,10 @@ class FileUploader
 
     public function upload()
     {
+        if (!file_exists($this->cmd->getFilepath())) {
+            throw new \Exception('o caminho original do arquivo declarado não existe');
+        }
+
         $key = Utils::randomKey();
 
         $tempPath = $this->currentPath . "/temp";
