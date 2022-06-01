@@ -50,7 +50,9 @@ class Run
 
         $logCdrService = new LogCdrService();
 
-        $logCdrService->sharedLink($this->cli, $path);
+        $url = $logCdrService->sharedLink($this->cli, $path);
+
+        $infos['file_url'] = $url;
 
         $this->deleteOriginalFile();
 

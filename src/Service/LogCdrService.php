@@ -17,7 +17,7 @@ class LogCdrService
         $this->doctrineManager = new DoctrineManager();
     }
 
-    public function sharedLink(CommandLine $cmd, string $path): void
+    public function sharedLink(CommandLine $cmd, string $path): string
     {
         $doctrine = $this->doctrineManager->getDoctrine();
 
@@ -29,5 +29,7 @@ class LogCdrService
         $logCdr->setLinkMp3($url);
 
         $doctrine->flush();
+
+        return $url;
     }
 }
