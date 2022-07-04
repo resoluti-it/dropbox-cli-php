@@ -15,6 +15,7 @@
 ```
 #### code: caso precise gerar um novo authorization_code, pode passar um autorization_code errado que a ferramenta retornará a URL certa
 #### é necessário rodar o script dropbox-make-refresh-token para configurar o ambiente conseguir fazer upload no dropbox
+#### para cada refresh token gerado o anterior é cancelado
 
 ## Exemplo de input
 ```bash
