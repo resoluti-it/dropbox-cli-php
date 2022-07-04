@@ -3,26 +3,39 @@
 require "vendor/autoload.php";
 
 use App\Utils;
-// https://www.dropbox.com/oauth2/authorize?client_id=<APP_KEY>&response_type=code&token_access_type=offline
+use Garden\Cli\Cli;
 
-/**
- * @var string $code
- */
-[, $code] = $argv;
+// https://www.dropbox.com/oauth2/authorize?client_id=<APP_KEY>&response_type=code&token_access_type=offline
+// ./dropbox-make-refresh-token --code="CODE" --refresh_token="REFRESH_TOKEN"
+
+$cli = new Cli();
+$cli->opt('code:c', 'authorization code temporario')->opt('refresh_token:r', 'refresh token se já tiver');
+
+$args = $cli->parse($argv);
 
 try {
-       $currentPath = __DIR__;
+       if ($args->get('refresh_token')) {
+              file_put_contents(__DIR__ . "/refresh_token.txt", $args->get('refresh_token'));
+       } else if ($args->get('code')) {
 
-       $utils = new Utils();
-       
-       $result = $utils->generateRefreshTokenFile($code, $currentPath);
-       
-       $refreshToken = $result['refresh_token'];
+              $code = $args->get('code');
 
-       file_put_contents(__DIR__ . "/refresh_token.txt", $refreshToken);
+              $currentPath = __DIR__;
 
-       echo "{$refreshToken}\r\n";
+              $utils = new Utils();
+
+              $result = $utils->generateRefreshTokenFile($code, $currentPath);
+
+              $refreshToken = $result['refresh_token'];
+
+              file_put_contents(__DIR__ . "/refresh_token.txt", $refreshToken);
+
+              echo "{$refreshToken}\r\n";
+       } else {
+              throw new \Exception("Não foi passado o parametro 'code' ou 'refresh_token'");
+       }
 } catch (\Exception $e) {
+       echo $e->getMessage() . "\r\n";
 
        if (!array_key_exists('APP_KEY', $_ENV) || !array_key_exists('APP_SECRET', $_ENV)) {
               echo "nenhuma APP_KEY ou APP_SECRET encontrada, atualize o arquivo env\r\n";
