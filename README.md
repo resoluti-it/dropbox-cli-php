@@ -2,6 +2,7 @@
 #### instalar em producao: composer install --no-dev
 #### definir access token no .env
 #### permissao de execucao: chmod +x run
+#### permissao de execucao: chmod +x runV2
 #### necessário definir o .env o APP_KEY e APP_SECRET para conseguir usar o dropbox-v2
 
 ## Se você já tiver o refresh token pode rodar com a flag --refresh-token="SEU REFRESH TOKEN AQUI"
