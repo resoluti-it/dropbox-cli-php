@@ -2,10 +2,23 @@
 #### instalar em producao: composer install --no-dev
 #### definir access token no .env
 #### permissao de execucao: chmod +x run
+#### necessário definir o .env o APP_KEY e APP_SECRET para conseguir usar o dropbox-v2
+
+## Se você já tiver o refresh token pode rodar com a flag --refresh-token="SEU REFRESH TOKEN AQUI"
+```bash
+./dropbox-make-refresh-token --refresh_token="SEU REFRESH TOKEN AQUI"
+```
+
+## Se você não tiver o refresh token use a flag --code="SEU AUTHORIZATION CODE AQUI"
+```bash
+./dropbox-make-refresh-token --code="SEU AUTHORIZATION CODE AQUI"
+```
+#### code: caso precise gerar um novo authorization_code, pode passar um autorization_code errado que a ferramenta retornará a URL certa
+#### é necessário rodar o script dropbox-make-refresh-token para configurar o ambiente conseguir fazer upload no dropbox
 
 ## Exemplo de input
 ```bash
-./run --filepath="/caminho/do/arquivo.docx" --folder="nome_da_pasta_no_dropbox" --uniqueid="1616153143.306" --rename
+./runV2 --filepath="/caminho/do/arquivo.docx" --folder="nome_da_pasta_no_dropbox" --uniqueid="1616153143.306" --rename
 ```
 #### rename: cria hash randomica no nome do arquivo - opcional
 #### folder: cria pasta no dropbox - obrigatório
