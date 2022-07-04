@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Service\OauthGenerator;
+use Dotenv\Dotenv;
+
 class Utils
 {
     public static function randomKey(): string
@@ -23,5 +26,18 @@ class Utils
         $str = preg_replace('/_+/', '_', $str);
 
         return strtoupper($str);
+    }
+
+    public function generateRefreshTokenFile(string $code, string $currentPath): ?array
+    {
+        $oauth = new OauthGenerator();
+
+        $dotenv = Dotenv::createImmutable($currentPath);
+
+        $dotenv->load();
+
+        $result = $oauth->getAccessToken($code);
+
+        return $result;
     }
 }

@@ -68,4 +68,5 @@ class FileUploader
         $dropbox = new DropboxClient();
         return $dropbox->setAccessToken($this->dotenvLoad->getAccessToken());
     }
+
 }

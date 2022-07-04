@@ -1,0 +1,34 @@
+#! /usr/bin/php
+<?php
+require "vendor/autoload.php";
+
+use App\Utils;
+// https://www.dropbox.com/oauth2/authorize?client_id=<APP_KEY>&response_type=code&token_access_type=offline
+
+/**
+ * @var string $code
+ */
+[, $code] = $argv;
+
+try {
+       $currentPath = __DIR__;
+
+       $utils = new Utils();
+       
+       $result = $utils->generateRefreshTokenFile($code, $currentPath);
+       
+       $refreshToken = $result['refresh_token'];
+
+       file_put_contents(__DIR__ . "/refresh_token.txt", $refreshToken);
+
+       echo "{$refreshToken}\r\n";
+} catch (\Exception $e) {
+
+       if (!array_key_exists('APP_KEY', $_ENV) || !array_key_exists('APP_SECRET', $_ENV)) {
+              echo "nenhuma APP_KEY ou APP_SECRET encontrada, atualize o arquivo env\r\n";
+              return;
+       }
+
+       $link = "https://www.dropbox.com/oauth2/authorize?client_id={$_ENV['APP_KEY']}&response_type=code&token_access_type=offline";
+       echo "para gerar um code_autorization e gerar um refresh_token válido acesse essa url:\r\n{$link}\r\n";
+}

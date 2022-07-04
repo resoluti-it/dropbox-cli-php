@@ -1,0 +1,82 @@
+#! /usr/bin/php
+<?php
+require "vendor/autoload.php";
+
+use App\Run;
+use App\Service\OauthGenerator;
+
+$refreshTokenPath = __DIR__ . "/refresh_token.txt";
+$currentPath = __DIR__;
+
+$run = new Run($currentPath, $argv);
+
+if (!file_exists($refreshTokenPath)) {
+       echo "refresh_token.txt não encontrado, execute o comando:\r\n./dropbox-make-refresh-token <CODE>\r\n";
+       return;
+}
+
+/**
+ * @var string $refreshToken
+ */
+$refreshToken = trim(file_get_contents($refreshTokenPath));
+
+$oauth = new OauthGenerator();
+
+$accessTokenObject = null;
+
+$accessTokenFileObject = __DIR__ . "/access_token.txt";
+
+if (!file_exists($accessTokenFileObject)) {
+       $accessTokenObjectJson = $oauth->getToken($refreshToken);
+
+       $accessTokenObject = json_decode($accessTokenObjectJson, true);
+
+       $datetime = new \DateTime('now');
+
+       $accessTokenObject['datetime'] = $datetime->format(DateTime::ATOM);
+
+       file_put_contents($accessTokenFileObject, json_encode($accessTokenObject));
+} else {
+
+       $contents = trim(file_get_contents($accessTokenFileObject));
+
+       $accessTokenObject = json_decode($contents, true);
+}
+
+$dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', $accessTokenObject['datetime']);
+
+$dateTime = $dateTime->modify("+{$accessTokenObject['expires_in']} seconds");
+
+if (new DateTime('now') > $dateTime) {
+       $accessTokenObjectJson = $oauth->getToken($refreshToken);
+
+       $accessTokenObject = json_decode($accessTokenObjectJson, true);
+
+       $datetime = new \DateTime('now');
+
+       $accessTokenObject['datetime'] = $datetime->format(DateTime::ATOM);
+
+       file_put_contents($accessTokenFileObject, json_encode($accessTokenObject));
+}
+
+["access_token" => $accessToken] = $accessTokenObject;
+
+$_ENV['ACCESS_TOKEN'] = $accessToken;
+
+try {
+
+       $dropboxReponse = $run->dropboxReponse();
+
+       echo json_encode($dropboxReponse);
+} catch (\Exception $e) {
+       $logsPath = $currentPath . '/logs';
+
+       if (!is_dir($logsPath)) {
+
+              mkdir($logsPath, 0777, true);
+       }
+
+       file_put_contents("{$logsPath}/log.txt", date('Y-m-d H:i:s') . " - " . $e->getMessage() . PHP_EOL, FILE_APPEND);
+
+       echo $e->getMessage();
+}

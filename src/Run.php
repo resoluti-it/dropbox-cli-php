@@ -58,4 +58,9 @@ class Run
 
         return $infos;
     }
+
+    public function getDotenvLoad(): DotenvLoad
+    {
+        return $this->envLoad;
+    }
 }
